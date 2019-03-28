@@ -5,8 +5,8 @@
 
 char toUID[512];
 
-char msg_msg[512][11];
-char msg_msgswitch[512][11];
+char msg_msg[11][512];
+char msg_msgswitch[11][512];
 int msg_switch_enabled[11];
 
 

@@ -1,7 +1,7 @@
 # Hotkey Message (ts3-plugin)
 
 Hotkey Message is ts3 plugin to send messages to clients with hotkeys.
-It has ability to send two messages with one hotkey, like a switch message
+It has ability to send two messages with one hotkey, like a switch message.
 Its mostly usable for teamspeak music bots
 
 

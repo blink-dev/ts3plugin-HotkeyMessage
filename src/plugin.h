@@ -21,8 +21,8 @@ extern struct TS3Functions ts3Functions;
 
 extern char toUID[512];
 
-extern char msg_msg[512][11];
-extern char msg_msgswitch[512][11];
+extern char msg_msg[11][512];
+extern char msg_msgswitch[11][512];
 extern int msg_switch_enabled[11];
 
 #ifdef __cplusplus
