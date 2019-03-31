@@ -1,6 +1,5 @@
 #include "config.h"
 #include "ui_configui.h"
-
 #include "plugin.h"
 
 char toUID[512];
@@ -16,7 +15,15 @@ config::config(const QString& configLocation, QWidget* parent /* = nullptr */) :
 {
 	m_ui->setupUi(this);
 
-	setWindowTitle("HotkeyMessage :: Config");
+	setWindowTitle("HotkeyMessage :: Configuration");
+
+	int w, h;
+	w = getConfigOption("dialog_width").toInt();
+	h = getConfigOption("dialog_height").toInt();
+
+	if (w == 0) { w = 640; h = 726; }
+
+	config::resize(w, h);
 
 	// Connect UI Elements.
 	connect(m_ui->SaveBtn, &QPushButton::clicked, this, &config::saveSettings);
@@ -70,6 +77,9 @@ void config::showEvent(QShowEvent* /* e */) {
 
 void config::saveSettings() 
 {
+	setConfigOption("dialog_width", config::size().width());
+	setConfigOption("dialog_height", config::size().height());
+
 	setConfigOption("Hotkey1_message", m_ui->Hotkey1_lineEdit->text());
 	setConfigOption("Hotkey1_switch_enabled", m_ui->Hotkey1_checkBox->isChecked());
 	setConfigOption("Hotkey1_switch_message", m_ui->Hotkey1_lineEdit_2->text());
