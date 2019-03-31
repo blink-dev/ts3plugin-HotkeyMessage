@@ -35,7 +35,7 @@
       <string>Message #1</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_11">
       <property name="sizeConstraint">
@@ -161,6 +161,9 @@
      <property name="title">
       <string>Message #2</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLineEdit" name="Hotkey2_lineEdit">
@@ -277,7 +280,7 @@
       <string>Message #3</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="sizeConstraint">
@@ -385,6 +388,9 @@
      <property name="title">
       <string>Message #4</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
        <widget class="QLineEdit" name="Hotkey4_lineEdit">
@@ -411,6 +417,9 @@
         </property>
         <property name="maxLength">
          <number>512</number>
+        </property>
+        <property name="cursorPosition">
+         <number>0</number>
         </property>
        </widget>
       </item>
@@ -487,6 +496,9 @@
     <widget class="QGroupBox" name="groupBox_5">
      <property name="title">
       <string>Message #5</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
@@ -591,6 +603,9 @@
      <property name="title">
       <string>Message #6</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
        <widget class="QLineEdit" name="Hotkey6_lineEdit">
@@ -693,6 +708,9 @@
     <widget class="QGroupBox" name="groupBox_7">
      <property name="title">
       <string>Message #7</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <item>
@@ -797,6 +815,9 @@
      <property name="title">
       <string>Message #8</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
      <layout class="QHBoxLayout" name="horizontalLayout_7">
       <item>
        <widget class="QLineEdit" name="Hotkey8_lineEdit">
@@ -900,6 +921,9 @@
      <property name="title">
       <string>Message #9</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
      <layout class="QHBoxLayout" name="horizontalLayout_8">
       <item>
        <widget class="QLineEdit" name="Hotkey9_lineEdit">
@@ -1002,6 +1026,9 @@
     <widget class="QGroupBox" name="groupBox_10">
      <property name="title">
       <string>Message #10</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_9">
       <item>
@@ -1190,10 +1217,6 @@
   <zorder>groupBox_5</zorder>
   <zorder>groupBox_3</zorder>
   <zorder>groupBox</zorder>
-  <zorder>Hotkey2_checkBox</zorder>
-  <zorder>Hotkey2_lineEdit_2</zorder>
-  <zorder>Hotkey2_pushButton</zorder>
-  <zorder>Hotkey1_checkBox</zorder>
   <zorder>widget</zorder>
  </widget>
  <resources/>
