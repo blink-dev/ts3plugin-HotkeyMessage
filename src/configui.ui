@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>configui</class>
  <widget class="QDialog" name="configui">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>480</height>
+    <width>639</width>
+    <height>623</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +21,9 @@
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="sizeConstraint">
@@ -57,8 +63,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>626</width>
-        <height>830</height>
+        <width>639</width>
+        <height>623</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
@@ -71,6 +77,21 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="Hotkey9_lineEdit">
             <property name="sizePolicy">
@@ -82,13 +103,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -126,13 +147,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="maxLength">
@@ -150,14 +171,14 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="focusPolicy">
@@ -165,6 +186,29 @@
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey9_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -180,6 +224,21 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="Hotkey6_lineEdit">
             <property name="sizePolicy">
@@ -191,13 +250,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -235,13 +294,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="maxLength">
@@ -259,18 +318,41 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey6_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -292,8 +374,23 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>5</number>
+          </property>
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
           </property>
           <item>
            <widget class="QLineEdit" name="Hotkey3_lineEdit">
@@ -306,13 +403,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -350,13 +447,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="maxLength">
@@ -374,18 +471,41 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey3_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -401,6 +521,21 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="Hotkey8_lineEdit">
             <property name="sizePolicy">
@@ -412,13 +547,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -456,13 +591,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="maxLength">
@@ -480,14 +615,14 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="focusPolicy">
@@ -495,6 +630,29 @@
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey8_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -510,6 +668,21 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="Hotkey7_lineEdit">
             <property name="sizePolicy">
@@ -521,13 +694,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -565,13 +738,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="maxLength">
@@ -589,18 +762,41 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey7_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -616,6 +812,21 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="Hotkey10_lineEdit">
             <property name="sizePolicy">
@@ -633,7 +844,7 @@
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -671,13 +882,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="maxLength">
@@ -695,18 +906,41 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey10_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -737,7 +971,7 @@
           <property name="bottomMargin">
            <number>3</number>
           </property>
-          <item row="0" column="0">
+          <item row="0" column="1">
            <spacer name="horizontalSpacer">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -750,32 +984,7 @@
             </property>
            </spacer>
           </item>
-          <item row="0" column="1">
-           <widget class="QPushButton" name="SaveBtn">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>Save</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
+          <item row="0" column="3">
            <widget class="QPushButton" name="CancelBtn">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -786,7 +995,7 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>30</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -797,6 +1006,38 @@
             </property>
             <property name="text">
              <string>Cancel</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="ReceiverListBtn">
+            <property name="text">
+             <string>Receiver List</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="SaveBtn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Save</string>
             </property>
            </widget>
           </item>
@@ -821,11 +1062,23 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <property name="spacing">
+           <number>5</number>
+          </property>
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
           </property>
           <property name="leftMargin">
-           <number>9</number>
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
           </property>
           <item>
            <widget class="QLineEdit" name="Hotkey1_lineEdit">
@@ -838,13 +1091,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -894,13 +1147,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -921,18 +1174,41 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey1_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -941,6 +1217,8 @@
          <zorder>Hotkey1_lineEdit_2</zorder>
          <zorder>Hotkey1_pushButton</zorder>
          <zorder>Hotkey1_lineEdit</zorder>
+         <zorder>Hotkey1_comboBox</zorder>
+         <zorder>label</zorder>
         </widget>
        </item>
        <item row="3" column="0">
@@ -952,6 +1230,21 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="Hotkey4_lineEdit">
             <property name="sizePolicy">
@@ -963,13 +1256,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -1010,13 +1303,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="maxLength">
@@ -1034,18 +1327,41 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey4_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -1061,6 +1377,21 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="Hotkey5_lineEdit">
             <property name="sizePolicy">
@@ -1072,13 +1403,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -1116,13 +1447,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="maxLength">
@@ -1140,18 +1471,41 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey5_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>
@@ -1167,6 +1521,21 @@
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>5</number>
+          </property>
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="Hotkey2_lineEdit">
             <property name="sizePolicy">
@@ -1178,13 +1547,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -1228,13 +1597,13 @@
             <property name="minimumSize">
              <size>
               <width>110</width>
-              <height>22</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>22</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="maxLength">
@@ -1252,18 +1621,41 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>110</width>
-              <height>30</height>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
              <string>Set Hotkey</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Receiver:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="Hotkey2_comboBox">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="currentText">
+             <string/>
             </property>
            </widget>
           </item>

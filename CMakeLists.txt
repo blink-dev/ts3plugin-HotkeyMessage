@@ -24,6 +24,9 @@ set (PLUGIN_SRC
 	"src/configui.ui"
     "src/config.h"
     "src/config.cpp"
+	"src/receiverlist.cpp"
+	"src/receiverlist.h"
+	"src/receiverlist.ui"
     "src/plugin.h"
     "src/plugin.cpp"
 )

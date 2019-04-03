@@ -21,18 +21,28 @@ public:
 	void setConfigOption(const QString& option, const QVariant& value);
 	QVariant getConfigOption(const QString& option) const;
 
+	void saveRecList(const QString& nick,const QString& uid);
+
+	void ClearWidgetsItem(int indexx);
+	void ClearAll();
+
+	int comboBox_SelectedItem(int value);
+
 	void loadVariables();
 
 protected:
 	void showEvent(QShowEvent* e) override;
 
 private:
-	std::unique_ptr<Ui::configui> m_ui;
+	Ui::configui* m_ui;
 	std::unique_ptr<QSettings> m_settings;
 
 	void saveSettings();
 	void loadSettings();
+
+	void openRecListDialog();
 	
 	void setHotkey();
+
 };
 

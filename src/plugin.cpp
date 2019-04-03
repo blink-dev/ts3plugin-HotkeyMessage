@@ -1,8 +1,3 @@
-/*
- * TeamSpeak 3 demo plugin
- *
- * Copyright (c) 2008-2017 TeamSpeak Systems GmbH
- */
 
 #ifdef _WIN32
 #pragma warning (disable : 4100)  /* Disable Unreferenced parameter warning */
@@ -11,7 +6,7 @@
 
 #include "plugin.h"
 
-#include "config.h"
+
 config* pConf = nullptr;
 
 struct TS3Functions ts3Functions;
@@ -95,7 +90,7 @@ const char* ts3plugin_name() {
 
 /* Plugin version */
 const char* ts3plugin_version() {
-    return "1.0.2";
+    return "1.0.3";
 }
 
 /* Plugin API version. Must be the same as the clients API major version, else the plugin fails to load. */
@@ -280,7 +275,7 @@ void ts3plugin_initMenus(struct PluginMenuItem*** menuItems, char** menuIcon) {
 
 	BEGIN_CREATE_MENUS(2);  /* IMPORTANT: Number of menu items must be correct! */
 	CREATE_MENU_ITEM(PLUGIN_MENU_TYPE_GLOBAL, MENU_ID_GLOBAL_1, "Open Settings", "manage.png");
-	CREATE_MENU_ITEM(PLUGIN_MENU_TYPE_CLIENT,  MENU_ID_CLIENT_1,  "Select Receiver",  "select.png");
+	CREATE_MENU_ITEM(PLUGIN_MENU_TYPE_CLIENT,  MENU_ID_CLIENT_1,  "Add Receiver",  "select.png");
 	END_CREATE_MENUS;  /* Includes an assert checking if the number of menu items matched */
 
 	/*
@@ -325,7 +320,7 @@ void ts3plugin_initHotkeys(struct PluginHotkey*** hotkeys) {
 	/* Register hotkeys giving a keyword and a description.
 	 * The keyword will be later passed to ts3plugin_onHotkeyEvent to identify which hotkey was triggered.
 	 * The description is shown in the clients hotkey dialog. */
-	BEGIN_CREATE_HOTKEYS(10);  /* Create 3 hotkeys. Size must be correct for allocating memory. */
+	BEGIN_CREATE_HOTKEYS(10);  /* Create 10 hotkeys. Size must be correct for allocating memory. */
 	CREATE_HOTKEY("send_message1", "Send Message 1");
 	CREATE_HOTKEY("send_message2", "Send Message 2");
 	CREATE_HOTKEY("send_message3", "Send Message 3");
@@ -347,7 +342,7 @@ void ts3plugin_onMenuItemEvent(uint64 serverConnectionHandlerID, enum PluginMenu
 		case PLUGIN_MENU_TYPE_GLOBAL:
 			switch (menuItemID) {
 					case MENU_ID_GLOBAL_1: {
-						if (pConf == nullptr) {
+						if(pConf == nullptr) {
 							char path[128];
 							ts3Functions.getConfigPath(path, 128);
 							// Can use the qParentWidget pointer here, to make whatever window the client deems appropriate the parent of our config dialog
@@ -373,10 +368,16 @@ void ts3plugin_onMenuItemEvent(uint64 serverConnectionHandlerID, enum PluginMenu
 			/* Client contextmenu item was triggered. selectedItemID is the clientID of the selected client */
 			switch(menuItemID) {
 					case MENU_ID_CLIENT_1: {
+						char* nick = NULL;
 						char* uid = NULL;
+
+						ts3Functions.getClientVariableAsString(serverConnectionHandlerID, selectedItemID, CLIENT_NICKNAME, &nick);
 						ts3Functions.getClientVariableAsString(serverConnectionHandlerID, selectedItemID, CLIENT_UNIQUE_IDENTIFIER, &uid);
-						strcpy_s(toUID, uid);
-						pConf->setConfigOption("toUID", toUID);
+						
+						receivers_list_nick.push_back(nick);
+						receivers_list_uid.push_back(uid);
+
+						pConf->saveRecList(nick, uid);
 					}
 					break;
 				default:
@@ -389,6 +390,32 @@ void ts3plugin_onMenuItemEvent(uint64 serverConnectionHandlerID, enum PluginMenu
 }
 
 void send_message(int num) {
+	int cbSelItem = pConf->comboBox_SelectedItem(num + 1);
+	if (cbSelItem == -1) return;
+	if (cbSelItem == 0) {
+		if (msg_switch_enabled[num]) {
+			if (switch_msg[num]) {
+				if (ts3Functions.requestSendChannelTextMsg(ts3Functions.getCurrentServerConnectionHandlerID(), msg_msg[num], NULL, NULL) != ERROR_ok) {
+					ts3Functions.logMessage("Error requesting send text message", LogLevel_ERROR, "HotkeyMessage", ts3Functions.getCurrentServerConnectionHandlerID());
+				}
+				switch_msg[num] = 0;
+			}
+			else {
+				if (ts3Functions.requestSendChannelTextMsg(ts3Functions.getCurrentServerConnectionHandlerID(), msg_msgswitch[num], NULL, NULL) != ERROR_ok) {
+					ts3Functions.logMessage("Error requesting send text message", LogLevel_ERROR, "HotkeyMessage", ts3Functions.getCurrentServerConnectionHandlerID());
+				}
+				switch_msg[num] = 1;
+			}
+		}
+		else {
+			if (ts3Functions.requestSendChannelTextMsg(ts3Functions.getCurrentServerConnectionHandlerID(), msg_msg[num], NULL, NULL) != ERROR_ok) {
+				ts3Functions.logMessage("Error requesting send text message", LogLevel_ERROR, "HotkeyMessage", ts3Functions.getCurrentServerConnectionHandlerID());
+			}
+		}
+		return;
+	}
+	strcpy_s(toUID, receivers_list_uid[(cbSelItem-1)].toStdString().c_str());
+	toID = getClientIdByUniqueId(toUID);
 	if (msg_switch_enabled[num]) {
 		if (switch_msg[num]) {
 			if (ts3Functions.requestSendPrivateTextMsg(ts3Functions.getCurrentServerConnectionHandlerID(), msg_msg[num], toID, NULL) != ERROR_ok) {
@@ -415,13 +442,12 @@ void ts3plugin_onHotkeyEvent(const char* keyword) {
 	int error;
 	ts3Functions.getConnectionStatus(ts3Functions.getCurrentServerConnectionHandlerID(), &error);
 	if (error != 4) return;
-	toID = getClientIdByUniqueId(toUID);
 	int helper;
 	sscanf_s(keyword, "send_message%d", &helper);
 
 	for (int i = 1; i < 11; i++) {
 		if (i == helper) {
-			send_message(i);
+			send_message(i - 1);
 			break;
 		}
 	}
