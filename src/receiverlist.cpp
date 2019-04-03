@@ -33,7 +33,7 @@ void ReceiverList::on_actionDelete_triggered()
 	receivers_list_nick.erase(std::remove(receivers_list_nick.begin(),receivers_list_nick.end(), clickedItem->text(0)),receivers_list_nick.end());
 	receivers_list_uid.erase(std::remove(receivers_list_uid.begin(), receivers_list_uid.end(), clickedItem->text(1)), receivers_list_uid.end());
 	int i = ui->treeWidget->selectedItems().indexOf(clickedItem);
-	pConf->ClearWidgetsItem(i);
+	pConf->ClearWidgetsItem(clickedItem->text(0));
 	if(ui->treeWidget->topLevelItemCount() == 1) pConf->ClearAll();
 	delete clickedItem;
 }

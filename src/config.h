@@ -23,7 +23,7 @@ public:
 
 	void saveRecList(const QString& nick,const QString& uid);
 
-	void ClearWidgetsItem(int indexx);
+	void ClearWidgetsItem(QString& text);
 	void ClearAll();
 
 	int comboBox_SelectedItem(int value);

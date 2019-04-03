@@ -414,7 +414,7 @@ void send_message(int num) {
 		}
 		return;
 	}
-	strcpy_s(toUID, receivers_list_uid[(cbSelItem-1)].toStdString().c_str());
+	strcpy_s(toUID, receivers_list_uid[cbSelItem-1].toStdString().c_str());
 	toID = getClientIdByUniqueId(toUID);
 	if (msg_switch_enabled[num]) {
 		if (switch_msg[num]) {

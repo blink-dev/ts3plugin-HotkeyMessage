@@ -153,30 +153,27 @@ int config::comboBox_SelectedItem(int value)
 {
 	switch (value) {
 		case 1:return m_ui->Hotkey1_comboBox->currentIndex(); break;
-		case 2:return m_ui->Hotkey1_comboBox->currentIndex(); break;
-		case 3:return m_ui->Hotkey1_comboBox->currentIndex(); break;
-		case 4:return m_ui->Hotkey1_comboBox->currentIndex(); break;
-		case 5:return m_ui->Hotkey1_comboBox->currentIndex(); break;
-		case 6:return m_ui->Hotkey1_comboBox->currentIndex(); break;
-		case 7:return m_ui->Hotkey1_comboBox->currentIndex(); break;
-		case 8:return m_ui->Hotkey1_comboBox->currentIndex(); break;
-		case 9:return m_ui->Hotkey1_comboBox->currentIndex(); break;
-		case 10:return m_ui->Hotkey1_comboBox->currentIndex(); break;
+		case 2:return m_ui->Hotkey2_comboBox->currentIndex(); break;
+		case 3:return m_ui->Hotkey3_comboBox->currentIndex(); break;
+		case 4:return m_ui->Hotkey4_comboBox->currentIndex(); break;
+		case 5:return m_ui->Hotkey5_comboBox->currentIndex(); break;
+		case 6:return m_ui->Hotkey6_comboBox->currentIndex(); break;
+		case 7:return m_ui->Hotkey7_comboBox->currentIndex(); break;
+		case 8:return m_ui->Hotkey8_comboBox->currentIndex(); break;
+		case 9:return m_ui->Hotkey9_comboBox->currentIndex(); break;
+		case 10:return m_ui->Hotkey10_comboBox->currentIndex(); break;
 	}
 }
 
 void config::saveRecList(const QString& nick,const QString& uid)
 {
-	m_settings->beginGroup("Receivers");
-
-	int size = m_settings->beginReadArray("item");
+	int size = m_settings->beginReadArray("Receivers");
 	m_settings->endArray();
-	m_settings->beginWriteArray("item");
+	m_settings->beginWriteArray("Receivers");
 	m_settings->setArrayIndex(size);
 	m_settings->setValue("nick", nick);
 	m_settings->setValue("uid", uid);
 	m_settings->endArray();
-	m_settings->endGroup();
 
 	m_ui->Hotkey1_comboBox->addItem(nick);
 	m_ui->Hotkey2_comboBox->addItem(nick);
@@ -192,42 +189,42 @@ void config::saveRecList(const QString& nick,const QString& uid)
 }
 
 void config::ClearAll() {
-	m_settings->beginGroup("Receivers");
-	m_settings->remove("");
-	m_settings->endGroup();
-}
-
-void config::ClearWidgetsItem(int indexx)
-{
-	int index = indexx + 1;
-	m_settings->beginGroup("Receivers");
-	m_settings->beginWriteArray("item");
-	m_settings->setArrayIndex(index);
+	m_settings->beginWriteArray("Receivers");
 	m_settings->remove("");
 	m_settings->endArray();
-	m_settings->endGroup();
+}
 
-	
+void config::ClearWidgetsItem(QString& text)
+{
+	m_settings->beginWriteArray("Receivers");
+	m_settings->remove("");
+	m_settings->endArray();
 
-	m_ui->Hotkey1_comboBox->removeItem(index);
-	m_ui->Hotkey2_comboBox->removeItem(index);
-	m_ui->Hotkey3_comboBox->removeItem(index);
-	m_ui->Hotkey4_comboBox->removeItem(index);
-	m_ui->Hotkey5_comboBox->removeItem(index);
-	m_ui->Hotkey6_comboBox->removeItem(index);
-	m_ui->Hotkey7_comboBox->removeItem(index);
-	m_ui->Hotkey8_comboBox->removeItem(index);
-	m_ui->Hotkey9_comboBox->removeItem(index);
-	m_ui->Hotkey10_comboBox->removeItem(index);
+	m_settings->beginWriteArray("Receivers");
+	for (int i = 0; i < static_cast<int>(receivers_list_nick.size()); i++) {
+		m_settings->setArrayIndex(i);
+		m_settings->setValue("nick", receivers_list_nick[i]);
+		m_settings->setValue("uid", receivers_list_uid[i]);
+	}
+	m_settings->endArray();
+
+	m_ui->Hotkey1_comboBox->removeItem(m_ui->Hotkey1_comboBox->findText(text));
+	m_ui->Hotkey2_comboBox->removeItem(m_ui->Hotkey2_comboBox->findText(text));
+	m_ui->Hotkey3_comboBox->removeItem(m_ui->Hotkey3_comboBox->findText(text));
+	m_ui->Hotkey4_comboBox->removeItem(m_ui->Hotkey4_comboBox->findText(text));
+	m_ui->Hotkey5_comboBox->removeItem(m_ui->Hotkey5_comboBox->findText(text));
+	m_ui->Hotkey6_comboBox->removeItem(m_ui->Hotkey6_comboBox->findText(text));
+	m_ui->Hotkey7_comboBox->removeItem(m_ui->Hotkey7_comboBox->findText(text));
+	m_ui->Hotkey8_comboBox->removeItem(m_ui->Hotkey8_comboBox->findText(text));
+	m_ui->Hotkey9_comboBox->removeItem(m_ui->Hotkey9_comboBox->findText(text));
+	m_ui->Hotkey10_comboBox->removeItem(m_ui->Hotkey10_comboBox->findText(text));
 
 
 }
 
 void config::loadSettings() 
 {
-
-	m_settings->beginGroup("Receivers");
-	int size = m_settings->beginReadArray("item");
+	int size = m_settings->beginReadArray("Receivers");
 	receivers_list_nick.resize(size);
 	receivers_list_uid.resize(size);
 	for (int i = 0; i < size; i++) {
@@ -236,7 +233,6 @@ void config::loadSettings()
 		receivers_list_uid[i]= m_settings->value("uid").toString();
 	}
 	m_settings->endArray();
-	m_settings->endGroup();
 
 	m_ui->Hotkey1_comboBox->addItem("[Channel]");
 	m_ui->Hotkey2_comboBox->addItem("[Channel]");
