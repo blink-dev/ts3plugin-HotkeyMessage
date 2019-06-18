@@ -33,6 +33,7 @@ extern char msg_msgswitch[10][512];
 extern int msg_switch_enabled[10];
 extern std::vector<QString> receivers_list_nick;
 extern std::vector<QString> receivers_list_uid;
+extern int speakEnabled;
 
 #ifdef __cplusplus
 extern "C" {
@@ -69,6 +70,9 @@ PLUGINS_EXPORTDLL void ts3plugin_freeMemory(void* data);
 PLUGINS_EXPORTDLL int ts3plugin_requestAutoload();
 PLUGINS_EXPORTDLL void ts3plugin_initMenus(struct PluginMenuItem*** menuItems, char** menuIcon);
 PLUGINS_EXPORTDLL void ts3plugin_initHotkeys(struct PluginHotkey*** hotkeys);
+
+/* ClientLib */
+PLUGINS_EXPORTDLL void ts3plugin_onEditCapturedVoiceDataEvent(uint64 serverConnectionHandlerID, short* samples, int sampleCount, int channels, int* edited);
 
 /* Client UI callbacks */
 PLUGINS_EXPORTDLL void ts3plugin_onMenuItemEvent(uint64 serverConnectionHandlerID, enum PluginMenuType type, int menuItemID, uint64 selectedItemID);

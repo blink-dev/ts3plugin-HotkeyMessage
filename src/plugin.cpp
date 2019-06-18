@@ -5,7 +5,8 @@
 #endif
 
 #include "plugin.h"
-
+//#include "speak.h"
+#include "wave.h"
 
 config* pConf = nullptr;
 
@@ -18,7 +19,7 @@ struct TS3Functions ts3Functions;
 #define _strcpy(dest, destSize, src) { strncpy(dest, src, destSize-1); (dest)[destSize-1] = '\0'; }
 #endif
 
-#define PLUGIN_API_VERSION 22
+#define PLUGIN_API_VERSION 23
 
 static char* pluginID = NULL;
 
@@ -90,7 +91,7 @@ const char* ts3plugin_name() {
 
 /* Plugin version */
 const char* ts3plugin_version() {
-    return "1.0.3";
+    return "1.0.4";
 }
 
 /* Plugin API version. Must be the same as the clients API major version, else the plugin fails to load. */
@@ -120,6 +121,8 @@ void ts3plugin_setFunctionPointers(const struct TS3Functions funcs) {
  * If the function returns 1 on failure, the plugin will be unloaded again.
  */
 int ts3plugin_init() {
+
+	//freopen("CONOUT$", "wb", stdout); //enables windows console output
 	if (pConf == nullptr) {
 		char path[128];
 		ts3Functions.getConfigPath(path, 128);
@@ -389,6 +392,11 @@ void ts3plugin_onMenuItemEvent(uint64 serverConnectionHandlerID, enum PluginMenu
 	}
 }
 
+int written = 0;
+short* captureBuffer;
+int captureBufferSamples;
+int bufferChannels;
+
 void send_message(int num) {
 	int cbSelItem = pConf->comboBox_SelectedItem(num + 1);
 	if (cbSelItem == -1) return;
@@ -398,13 +406,13 @@ void send_message(int num) {
 				if (ts3Functions.requestSendChannelTextMsg(ts3Functions.getCurrentServerConnectionHandlerID(), msg_msg[num], NULL, NULL) != ERROR_ok) {
 					ts3Functions.logMessage("Error requesting send text message", LogLevel_ERROR, "HotkeyMessage", ts3Functions.getCurrentServerConnectionHandlerID());
 				}
-				switch_msg[num] = 0;
+				else switch_msg[num] = 0;
 			}
 			else {
 				if (ts3Functions.requestSendChannelTextMsg(ts3Functions.getCurrentServerConnectionHandlerID(), msg_msgswitch[num], NULL, NULL) != ERROR_ok) {
 					ts3Functions.logMessage("Error requesting send text message", LogLevel_ERROR, "HotkeyMessage", ts3Functions.getCurrentServerConnectionHandlerID());
 				}
-				switch_msg[num] = 1;
+				else switch_msg[num] = 1;
 			}
 		}
 		else {
@@ -414,25 +422,36 @@ void send_message(int num) {
 		}
 		return;
 	}
-	strcpy_s(toUID, receivers_list_uid[cbSelItem-1].toStdString().c_str());
+	strcpy_s(toUID, receivers_list_uid[(unsigned _int64)cbSelItem-1].toStdString().c_str());
 	toID = getClientIdByUniqueId(toUID);
 	if (msg_switch_enabled[num]) {
 		if (switch_msg[num]) {
 			if (ts3Functions.requestSendPrivateTextMsg(ts3Functions.getCurrentServerConnectionHandlerID(), msg_msg[num], toID, NULL) != ERROR_ok) {
 				ts3Functions.logMessage("Error requesting send text message", LogLevel_ERROR, "HotkeyMessage", ts3Functions.getCurrentServerConnectionHandlerID());
 			}
-			switch_msg[num] = 0;
+			else {
+
+				switch_msg[num] = 0;
+			}
+			
 		}
 		else {
 			if (ts3Functions.requestSendPrivateTextMsg(ts3Functions.getCurrentServerConnectionHandlerID(), msg_msgswitch[num], toID, NULL) != ERROR_ok) {
 				ts3Functions.logMessage("Error requesting send text message", LogLevel_ERROR, "HotkeyMessage", ts3Functions.getCurrentServerConnectionHandlerID());
 			}
-			switch_msg[num] = 1;
+			else {
+
+				switch_msg[num] = 1;
+			}
+			
 		}
 	}
 	else {
 		if (ts3Functions.requestSendPrivateTextMsg(ts3Functions.getCurrentServerConnectionHandlerID(), msg_msg[num], toID, NULL) != ERROR_ok) {
 			ts3Functions.logMessage("Error requesting send text message", LogLevel_ERROR, "HotkeyMessage", ts3Functions.getCurrentServerConnectionHandlerID());
+		}
+		else {
+
 		}
 	}
 }
@@ -455,10 +474,7 @@ void ts3plugin_onHotkeyEvent(const char* keyword) {
 
 /* Called when recording a hotkey has finished after calling ts3Functions.requestHotkeyInputDialog */
 void ts3plugin_onHotkeyRecordedEvent(const char* keyword, const char* key) {
-	//if (!strcmp(key, "")) { pConf->setButtonText("Set Hotkey"); return; }
-	//pConf->setButtonText(key);
 	char msg[30] = "Hotkey set: ";
 	strcat_s(msg, key);
 	ts3Functions.printMessageToCurrentTab(msg);
-	//ts3Functions.logMessage(key, LogLevel_DEBUG, "HotkeyMessage", ts3Functions.getCurrentServerConnectionHandlerID());
 }
