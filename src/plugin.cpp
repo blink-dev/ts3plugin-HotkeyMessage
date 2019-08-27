@@ -5,8 +5,6 @@
 #endif
 
 #include "plugin.h"
-//#include "speak.h"
-#include "wave.h"
 
 config* pConf = nullptr;
 
